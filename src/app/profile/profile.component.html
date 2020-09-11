@@ -22,13 +22,13 @@
 
 <!-- Modal -->
 <div class="modal fade" id="profileInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document" *ngIf="selectProfile">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Informaçoes de {{ selectProfile.name }}</h4>
       </div>
-      <div class="modal-body" *ngIf="selectProfile">
+      <div class="modal-body">
         <strong>Name: </strong>{{ selectProfile.name }}
         <hr />
         <strong>Nationality: </strong>{{ selectProfile.nationality }}

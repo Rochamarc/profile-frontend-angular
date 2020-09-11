@@ -1,36 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Profile } from './profile.model';
+import { ProfileService } from './profile.service';
 
-const PROFILES: Array<Profile> = [
-  { id: 1, name: 'Marcos', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 2, name: 'Matheus', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 3, name: 'Filipe', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 4, name: 'Thays', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 5, name: 'Fernanda', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 6, name: 'Malu', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 7, name: 'Bruno', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 8, name: 'Nila', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 9, name: 'Deia', nationality: 'Brazilian', birthdate: '24/021997' },
-  { id: 10, name: 'Flavio', nationality: 'Brazilian', birthdate: '24/021997' },
-];
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [
+    ProfileService
+  ]
 })
 export class ProfileComponent implements OnInit {
-  public profiles; 
-  public selectProfile;
+  public profiles: Array<Profile>; 
+  public selectProfile: Profile;
+  private profileService: ProfileService;
 
-  constructor() { 
-    this.profiles = PROFILES;
+
+  constructor(profileService: ProfileService) { 
+    this.profileService = profileService; // Instancia o profileService dentro da classe
   }
 
   ngOnInit() {
+    this.profiles = this.profileService.getProfiles(); // Requisiçao get profiles
   }
-
+  
+  // Mostra o perfil selecionado 
   public onSelect(profile: Profile): void {
     this.selectProfile = profile
   }
