@@ -1,11 +1,14 @@
+
 <div class="row">
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-4" *ngFor="let profile of profiles">
     <div class="thumbnail">
-      <img src="../../assets/img/user.png" alt="...">
+      <img src="../../assets/img/perfil.png" alt="...">
       <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <h3>{{ profile.name }}</h3>
+        <p>
+          <strong>Nationality: </strong> {{ profile.nationality }}
+        </p>
+        <p><button class="btn btn-primary" data-toggle="modal" data-target="#profileInfo" (click)="onSelect(profile)">Info</button> <button class="btn btn-default" role="button">Button</button></p>
       </div>
     </div>
   </div>
@@ -18,15 +21,31 @@
 -->
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="profileInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Informaçoes de {{ selectProfile.name }}</h4>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body" *ngIf="selectProfile">
+        <strong>Name: </strong>{{ selectProfile.name }}
+        <hr />
+        <strong>Nationality: </strong>{{ selectProfile.nationality }}
+        <hr />
+        <strong>Email: </strong> Email do usuario
+        <hr />
+        <strong>Ssn: </strong>Cpf do usuario
+        <hr />
+        <strong>Identity: </strong>Numero da identidade do usuario
+        <hr />
+        <strong>Birthdate: </strong>{{ selectProfile.birthdate }}
+        <hr />
+        <strong>Mother: </strong>Nome da mae 
+        <hr />
+        <strong>Father: </strong> Nome do pai
+        <hr />
+        <strong>State: </strong> Estado
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
