@@ -31,4 +31,8 @@ export class ProfileComponent implements OnInit {
     this.selectProfile = profile
   }
 
+  public deleteProfile(profile: Profile): void {
+    this.profileService.deleteProfile(profile);
+  }
+
 }

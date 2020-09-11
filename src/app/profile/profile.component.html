@@ -1,14 +1,18 @@
 
 <div class="row">
   <div class="col-sm-6 col-md-4" *ngFor="let profile of profiles">
-    <div class="thumbnail">
-      <img src="../../assets/img/perfil.png" alt="...">
+    <div class="thumbnail" *ngIf="profile">
+      <img src="../../assets/img/user.png" alt="...">
       <div class="caption">
         <h3>{{ profile.name }}</h3>
         <p>
           <strong>Nationality: </strong> {{ profile.nationality }}
         </p>
-        <p><button class="btn btn-primary" data-toggle="modal" data-target="#profileInfo" (click)="onSelect(profile)">Info</button> <button class="btn btn-default" role="button">Button</button></p>
+        <p><button class="btn btn-primary" data-toggle="modal" data-target="#profileInfo" (click)="onSelect(profile)">
+          <span class="glyphicon glyphicon-info-sign"></span> Info
+        </button> 
+        <button class="btn btn-default" role="button" (click)="deleteProfile(profile)">
+          Button</button></p>
       </div>
     </div>
   </div>
