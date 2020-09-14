@@ -33,9 +33,11 @@
         <h4 class="modal-title" id="myModalLabel">Informaçoes de {{ selectProfile.name }}</h4>
       </div>
       <div class="modal-body">
-        <strong>Name: </strong>{{ selectProfile.name }}
+        <strong><p>Name: </p></strong>
+        <input [(ngModel)]="selectProfile.name" class="form-control" type="text">
         <hr />
-        <strong>Nationality: </strong>{{ selectProfile.nationality }}
+        <strong><p>Nationality: </p></strong>
+        <input [(ngModel)]="selectProfile.nationality" class="form-control" type="text">
         <hr />
         <strong>Email: </strong> Email do usuario
         <hr />
